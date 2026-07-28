@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { getApiErrorMessage } from "@/lib/error";
 import { queryKeys } from "@/lib/query-keys";
 import { RentalService } from "@/services/rental.service";
-import type { CreateRentalPayload } from "@/types/rental";
+import type { CreateRentalPayload, UpdateRentalStatusPayload } from "@/types/rental";
 
 export function useCreateRentalRequest(propertyId?: string) {
   const queryClient = useQueryClient();
@@ -36,5 +36,23 @@ export function useLandlordRequests() {
   return useQuery({
     queryKey: queryKeys.landlordRequests,
     queryFn: async () => (await RentalService.getLandlordRequests()).data,
+  });
+}
+
+export function useUpdateRentalStatus() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, payload }: { id: string; payload: UpdateRentalStatusPayload }) =>
+      RentalService.updateStatus(id, payload),
+    onSuccess: (_response, variables) => {
+      toast.success(
+        variables.payload.status === "APPROVED" ? "Request approved." : "Request rejected.",
+      );
+      queryClient.invalidateQueries({ queryKey: queryKeys.landlordRequests });
+    },
+    onError: (error) => {
+      toast.error(getApiErrorMessage(error));
+    },
   });
 }
