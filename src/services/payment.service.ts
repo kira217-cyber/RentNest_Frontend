@@ -28,9 +28,4 @@ export const PaymentService = {
     const { data } = await apiClient.get<ApiSuccessResponse<Payment[]>>("/payments");
     return data;
   },
-
-  async getOne(id: string) {
-    const { data } = await apiClient.get<ApiSuccessResponse<Payment>>(`/payments/${id}`);
-    return data;
-  },
 };

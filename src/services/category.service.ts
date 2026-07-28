@@ -16,11 +16,6 @@ export const CategoryService = {
     return data;
   },
 
-  async getOne(id: string) {
-    const { data } = await apiClient.get<ApiSuccessResponse<Category>>(`/categories/${id}`);
-    return data;
-  },
-
   async create(payload: CreateCategoryPayload) {
     const { data } = await apiClient.post<ApiSuccessResponse<Category>>("/categories", payload);
     return data;
