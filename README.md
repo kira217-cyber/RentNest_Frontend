@@ -8,7 +8,7 @@ requests, and payments. This repository is the **frontend only** — built with
 Next.js App Router and TypeScript against an already-deployed RentNest
 backend (Node/Express/Prisma/PostgreSQL).
 
-- **Live frontend:** _add your deployed Vercel URL here_
+- **Live frontend:** https://rent-nest-frontend.vercel.app/
 - **Backend API:** https://rentnest-backend.vercel.app/api
 - **Backend API docs (Postman):** https://documenter.getpostman.com/view/55085333/2sBY4Jv2Tr
 - **Demo video:** _add your video URL here_
