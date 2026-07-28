@@ -1,33 +1,23 @@
 import { Bath, Bed, MapPin, Ruler } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/common/badge";
 import { PROPERTY_STATUS_TONE, toTitleCase } from "@/lib/status";
 import { cn, formatCurrency } from "@/lib/utils";
 import type { Property } from "@/types/property";
+import { PropertyImage } from "./property-image";
 
 export function PropertyCard({ property }: { property: Property }) {
-  const cover = property.images?.[0];
-
   return (
     <Link
       href={`/properties/${property.id}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-shadow hover:shadow-lg"
     >
       <div className="relative h-48 w-full overflow-hidden bg-background">
-        {cover ? (
-          <Image
-            src={cover}
-            alt={property.title}
-            fill
-            sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 100vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-sm text-muted">
-            No image available
-          </div>
-        )}
+        <PropertyImage
+          src={property.images?.[0]}
+          alt={property.title}
+          sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 100vw"
+        />
         <Badge
           tone={PROPERTY_STATUS_TONE[property.status]}
           className="absolute left-3 top-3 shadow-sm"
