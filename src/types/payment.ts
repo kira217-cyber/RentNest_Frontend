@@ -1,3 +1,5 @@
+import type { Property } from "./property";
+
 export type PaymentProvider = "STRIPE" | "SSLCOMMERZ";
 
 export type PaymentStatus = "PENDING" | "COMPLETED" | "FAILED" | "CANCELLED";
@@ -15,6 +17,10 @@ export type Payment = {
   failedAt?: string | null;
   createdAt: string;
   updatedAt: string;
+  rentalRequest?: {
+    id: string;
+    property: Property;
+  };
 };
 
 export type CreatePaymentPayload = {
