@@ -2,7 +2,9 @@ import { apiClient } from "@/lib/api-client";
 import type { ApiSuccessResponse } from "@/types/api";
 import type {
   AdminDashboardStats,
+  AdminPropertyDetail,
   AdminPropertyQuery,
+  AdminRentalDetail,
   AdminRentalQuery,
   AdminUserQuery,
 } from "@/types/admin";
@@ -41,7 +43,7 @@ export const AdminService = {
   },
 
   async getProperty(id: string) {
-    const { data } = await apiClient.get<ApiSuccessResponse<Property>>(
+    const { data } = await apiClient.get<ApiSuccessResponse<AdminPropertyDetail>>(
       `/admin/properties/${id}`,
     );
     return data;
@@ -55,7 +57,7 @@ export const AdminService = {
   },
 
   async getRental(id: string) {
-    const { data } = await apiClient.get<ApiSuccessResponse<RentalRequest>>(
+    const { data } = await apiClient.get<ApiSuccessResponse<AdminRentalDetail>>(
       `/admin/rentals/${id}`,
     );
     return data;

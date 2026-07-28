@@ -1,4 +1,6 @@
+import type { Property } from "./property";
 import type { RentalRequest } from "./rental";
+import type { Review } from "./review";
 import type { User } from "./user";
 
 export type AdminDashboardStats = {
@@ -47,4 +49,14 @@ export type AdminRentalQuery = {
   status?: string;
   tenantId?: string;
   propertyId?: string;
+};
+
+export type AdminPropertyDetail = Property & {
+  landlord: Pick<User, "id" | "name" | "email" | "phone" | "status">;
+  rentalRequests: RentalRequest[];
+  reviews: Review[];
+};
+
+export type AdminRentalDetail = RentalRequest & {
+  tenant: Pick<User, "id" | "name" | "email" | "phone" | "photo" | "status" | "createdAt">;
 };
