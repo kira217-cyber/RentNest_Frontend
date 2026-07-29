@@ -123,7 +123,7 @@ npm run build    # Production build
 
 ```text
 Email: admin@rentnest.com
-Password: 123456
+Password: admin123
 ```
 
 ## Test Payment Instructions
