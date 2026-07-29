@@ -43,14 +43,6 @@ export function LoginForm() {
         <p className="mt-1 text-muted-foreground">Log in to your RentNest account.</p>
       </div>
 
-      <div className="mb-6 rounded-lg border border-primary/20 bg-primary/5 p-3 text-xs text-muted-foreground">
-        <p className="font-medium text-foreground">Demo admin access</p>
-        <p>
-          Email: <span className="font-mono">admin@rentnest.com</span> · Password:{" "}
-          <span className="font-mono">admin123</span>
-        </p>
-      </div>
-
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
         <Field label="Email" htmlFor="email" error={errors.email?.message} required>
           <Input

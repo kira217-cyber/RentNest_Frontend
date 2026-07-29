@@ -123,10 +123,8 @@ npm run build    # Production build
 
 ```text
 Email: admin@rentnest.com
-Password: admin123
+Password: 123456
 ```
-
-Also shown as a small demo-credentials card on the login page.
 
 ## Test Payment Instructions
 
